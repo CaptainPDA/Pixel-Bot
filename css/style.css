@@ -18,8 +18,33 @@
   display: inline-block;
   width: 40px;
   height: 40px;
-  border: 2px solid black;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.2);
+  margin-right: 2px; 
+  cursor: pointer;
+  transition: all ease 0.1s;
 }
+
+.pen:hover {
+  border-color: rgba(0, 0, 0, 1);
+}
+
+.pen.eraser {
+  float: left;
+  color: rgba(0, 0, 0, 0.2);
+  transition: all ease 0.1s;
+}
+
+.pen.eraser:hover {
+  color: rgba(0, 0, 0, 1);
+}
+
+.pen.eraser i{
+  font-size: 28px;
+  margin-top: 8px;
+  margin-left: 6px;
+}
+
 
 .result{
   white-space: nowrap;
@@ -27,4 +52,15 @@
   border: 1px solid #000000;
   overflow: hidden;
   text-overflow: clip;
+}
+
+#palette {
+  width: fit-content;
+  margin-left: calc(50% - 494px);
+}
+
+#PBotCanvas {
+  margin-left: calc(50% - 240px);
+  margin-top: 10px;
+  cursor: none;
 }
