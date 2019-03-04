@@ -140,28 +140,14 @@ class Grid {
      * Generate Code
      */
     generateCode() {
-        let out1 = '!pb1';
-        let out2 = '!pb1';
+        let out = '!pb1.';
 
-        let counter = 1;
         this.layout.forEach( row => {
             row.forEach(tile => {
-                let code;
-
-                if (tile.color.title !== 'eraser') {
-                    code = '.' + tile.color.title + tile.id;
-                }
-
-                if (counter <= 74) {
-                    out1 += code;
-                } else {
-                    out2 += code;
-                }
-
-                ++counter;
+                out += (tile.color.title === 'eraser' ? 'z' : tile.color.title);
             });
         });
 
-        return { first: out1, second: out2 };
+        return out;
     }
 }

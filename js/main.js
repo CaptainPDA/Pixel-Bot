@@ -1,27 +1,32 @@
 // This is the main file, grid entry point.
 const COLOR_PALETTE = [
     { color: 'transparent', title: 'eraser' },
-    { color: 'gray', title: 'x' },
-    { color: 'white', title: 'w' },
-    { color: 'maroon', title: 'm' },
-    { color: 'red', title: 'r' },
-    { color: 'orangered', title: 'or' },
-    { color: 'darkorange', title: 'do' },
-    { color: 'orange', title: 'or' },
-    { color: 'khaki', title: 'k' },
-    { color: 'yellow', title: 'y' },
-    { color: 'gold', title: 'go' },
-    { color: '#B8860B', title: 'gr' },
-    { color: 'darkgreen', title: 'dg' },
-    { color: 'green', title: 'g' },
-    { color: 'teal', title: 'te' },
-    { color: 'cyan', title: 'cy' },
-    { color: 'blue', title: 'b' },
-    { color: 'navy', title: 'n' },
-    { color: 'purple', title: 'p' },
-    { color: '#6441a5', title: 'tp' },
-    { color: 'pink', title: 'pi' }
+    { color: '#ff0000', title: 'a' },
+    { color: '#008000', title: 'b' },
+    { color: '#0000ff', title: 'c' },
+    { color: '#ffffff', title: 'd' },
+    { color: '#000000', title: 'e' },
+    { color: '#FFFF00', title: 'f' },
+    { color: '#800000', title: 'g' },
+    { color: '#800080', title: 'h' },
+    { color: '#6441a5', title: 'i' },
+    { color: '#000080', title: 'j' },
+    { color: '#006400', title: 'k' },
+    { color: '#ffd700', title: 'l' },
+    { color: '#f0e68c', title: 'm' },
+    { color: '#daa520', title: 'n' },
+    { color: '#00ffff', title: 'o' },
+    { color: '#008080', title: 'p' },
+    { color: '#00ced1', title: 'q' },
+    { color: '#ffa500', title: 'r' },
+    { color: '#ff8c00', title: 's' },
+    { color: '#ff4500', title: 't' },
+    { color: '#ffc0cb', title: 'u' },
+    { color: '#ff1493', title: 'v' },
+    { color: '#ffa07a', title: 'w' }
 ];
+
+
 
 class PBotCanvas {
 
@@ -43,6 +48,11 @@ class PBotCanvas {
     }
 
     init() {
+        let strTest = 'u8664uu65465uuu-!?uuiiiiuuuibbbiiiiiuuuuiiibbiiiibuuuuuuuuuuiibuuu256uiuuuiiibiuuuuuuiiiibbuuuuiiiiiiibuuuiiiiiiiuuuiiiiiiiiiuuuiiiiiiiiiiiuuuuuiiiiiiiuuuuuuuu9';
+        let reg = /[a-z]/g;
+        
+        let filteredStr = (strTest.match(reg) || []);
+        console.warn(filteredStr);
         
         this.drawPalette();
         this.subscribeToEvents();
@@ -109,9 +119,7 @@ class PBotCanvas {
 
         // Generate Code
         document.getElementById('code-btn').onclick = (e) => {
-            let code = this.grid.generateCode();
-            document.getElementById('demo').innerHTML = code.first;
-            document.getElementById('demo2').innerHTML = code.second;
+            document.getElementById('demo').innerHTML = this.grid.generateCode();
         };
 
         
