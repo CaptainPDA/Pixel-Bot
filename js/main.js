@@ -48,12 +48,6 @@ class PBotCanvas {
     }
 
     init() {
-        let strTest = 'u8664uu65465uuu-!?uuiiiiuuuibbbiiiiiuuuuiiibbiiiibuuuuuuuuuuiibuuu256uiuuuiiibiuuuuuuiiiibbuuuuiiiiiiibuuuiiiiiiiuuuiiiiiiiiiuuuiiiiiiiiiiiuuuuuiiiiiiiuuuuuuuu9';
-        let reg = /[a-z]/g;
-        
-        let filteredStr = (strTest.match(reg) || []);
-        console.warn(filteredStr);
-        
         this.drawPalette();
         this.subscribeToEvents();
         this.update()
