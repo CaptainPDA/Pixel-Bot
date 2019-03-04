@@ -74,6 +74,22 @@ class PBotCanvas {
             this.update()
         });
 
+        // touchmove
+        this.element.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            this.pointer.positionX = e.touches[0].clientX - this.element.offsetLeft - (this.pointer.width / 2);
+            this.pointer.positionY = e.touches[0].lientY - this.element.offsetTop - (this.pointer.height / 2);
+            
+            if (this.isDragging) {
+                let x = e.touches[0].clientX - this.element.offsetLeft;
+                let y = e.touches[0].clientY - this.element.offsetTop;
+                
+                this.grid.handleMouseDown(x, y, this.currentColor);
+            }
+
+            this.update();
+        });
+
         // mousedown
         this.element.addEventListener('mousedown', (e) => {
             this.isDragging = true;
@@ -84,10 +100,27 @@ class PBotCanvas {
             this.grid.handleMouseDown(x, y, this.currentColor);
         });
 
+        // touchstart
+        this.element.addEventListener('touchstart', (e) => {
+            this.isDragging = true;
+
+            let x = e.touches[0].clientX.clientX - this.element.offsetLeft;
+            let y = e.touches[0].clientY - this.element.offsetTop;
+
+            this.grid.handleMouseDown(x, y, this.currentColor);
+            this.update();
+        }, false);
+
         // mouseup
         window.addEventListener('mouseup', (e) => {
             this.isDragging = false;
         });
+
+        // tocuhup
+        window.addEventListener('touchend', (e) => {
+            this.isDragging = false;
+            this.update();
+        }, false);
 
         // Select Color
         let self = this; // save scope for jquery function
