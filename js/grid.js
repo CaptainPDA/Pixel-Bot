@@ -140,7 +140,8 @@ class Grid {
      * Generate Code
      */
     generateCode() {
-        let out = '!pb1.';
+        let prefix = '!pb1d.';
+        let out = '';
 
         this.layout.forEach( row => {
             row.forEach(tile => {
@@ -148,6 +149,39 @@ class Grid {
             });
         });
 
+        return prefix + this.encodeRLE(out);
+    }
+
+    /**
+     * Encode text to RLE
+     * @param code 
+     */
+    encodeRLE(code) {
+
+        let charCount = 1;
+        let out = '';
+        
+        for(let i = 0; i < code.length; i++) {
+            
+            let nextChar = code[i + 1];
+            let currChar = code[i];
+            
+            if(currChar == nextChar) {
+                charCount++;
+
+                if(i == code.length - 1) {
+                    out += charCount + currChar;
+                    break;
+                }
+
+            } else {
+                out += charCount + currChar;
+                currChar = nextChar;
+                charCount = 1;
+            }
+        }
+        
         return out;
     }
+    
 }
