@@ -9,6 +9,9 @@
   padding-left: 15px;
 }
 
+.content {
+  height: calc(100vh - 106px);
+}
 
 .details-box {
   padding: 20px !important;
@@ -91,4 +94,10 @@ footer {
   background-color: #010101 !important;
   color: white;
   position: relative;
+}
+
+footer.mobile {
+  position: absolute !important;
+  bottom: -120px !important;
+  left: 0 !important;
 }

@@ -16,6 +16,8 @@
 	<script src="js/grid.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/script.js"></script>
+
+	<title> PBot Editor | Laboratory 424</title>
 </head>
 <body>
 
@@ -25,43 +27,51 @@
 		</div>
 	</nav>
 
-	<div class="row"> 
-		<div class="col s10 offset-s1 details-box">
-			Use PBot Editor to create pixel art you can show live during <a href="https://twitch.tv/laboratory424">Laboratory 424’s Stream</a> on PixelBot. Simply draw your picture, generate/copy the code, and paste it into chat during the stream to see magic happen. <a href="https://www.laboratory424.com/labbots/pixelbot">More details</a>.
+	<div class="content">
+
+		<div class="row"> 
+			<div class="col s10 offset-s1 details-box">
+				Use PBot Editor to create pixel art you can show live during <a href="https://twitch.tv/laboratory424">Laboratory 424’s Stream</a> on PixelBot. Simply draw your picture, generate/copy the code, and paste it into chat during the stream to see magic happen. <a href="https://www.laboratory424.com/labbots/pixelbot">More details</a>.
+			</div>
 		</div>
+		
+		
+		<div class="row"> 
+			<div class="col s12 m12 l5 offset-l1 grid ">
+				<canvas id="PBotCanvas"></canvas>
+			</div>
+			
+			<div class="col s12 m12 l5 controls">
+				<div class="palette">
+					<ul class="color-list">	
+						<li></li>
+					</ul>
+				</div>
+				
+				<div class="code hide">
+					<p contenteditable="true" class="result" id="demo"></p>
+				</div>
+				
+				<div class="buttons center-align">
+					<button class="btn waves-effect waves-light amber darken-3" id="code-btn">Generate Code
+						<i class="material-icons right">code</i>
+					</button>
+					<button class="btn waves-effect waves-light #f9a825 yellow darken-3" onclick="copyToClipboard('#demo')">Copy Code
+							<i class="material-icons right">content_copy</i>
+					</button>
+				</div>
+
+				<footer class="mobile hide-on-large-only">
+					PBot Editor created by <a href="https://www.clawstudios.com/">Claw Studios</a>. Original PixelBot concept invented by <a href="https://www.laboratory424.com/">Laboratory 424</a>. First concept ideas for editor done by <a href="https://www.twitch.tv/CaptainPDA">CaptainPDA</a>.
+				</footer>
+			</div>
+		</div>
+			
 	</div>
-
-
-	<div class="row"> 
-		<div class="col s12 m12 l5 offset-l1 grid ">
-			<canvas id="PBotCanvas"></canvas>
-		</div>
-
-		<div class="col s12 m12 l5 controls">
-			<div class="palette">
-				<ul class="color-list">	
-					<li></li>
-				</ul>
-			</div>
-
-			<div class="code hide">
-				<p contenteditable="true" class="result" id="demo"></p>
-			</div>
-
-			<div class="buttons center-align">
-				<button class="btn waves-effect waves-light amber darken-3" id="code-btn">Generate Code
-					<i class="material-icons right">code</i>
-				</button>
-				<button class="btn waves-effect waves-light #f9a825 yellow darken-3" onclick="copyToClipboard('#demo')">Copy Code
-					<i class="material-icons right">content_copy</i>
-				</button>
-			</div>
-		</div>
-	</div>
-
-
-	<footer>
+		
+	<footer class="hide-on-med-and-down">
 		PBot Editor created by <a href="https://www.clawstudios.com/">Claw Studios</a>. Original PixelBot concept invented by <a href="https://www.laboratory424.com/">Laboratory 424</a>. First concept ideas for editor done by <a href="https://www.twitch.tv/CaptainPDA">CaptainPDA</a>.
 	</footer>
 </body>
 </html>
+	
