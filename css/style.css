@@ -78,3 +78,17 @@ a {
   cursor: none;
   display: block;
 }
+
+.controls {
+  margin-bottom: 20px;
+}
+
+footer {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  bottom: 0;
+  background-color: #010101 !important;
+  color: white;
+  position: relative;
+}
