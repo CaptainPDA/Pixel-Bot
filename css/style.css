@@ -22,7 +22,6 @@
 }
 
 .grid {
-  /*min-width: 480px;*/
 }
 
 a {
@@ -80,6 +79,7 @@ a {
   margin-top: 10px;
   cursor: none;
   display: block;
+  background: #010101;
 }
 
 .controls {
