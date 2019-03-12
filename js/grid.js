@@ -94,7 +94,7 @@ class Grid {
             this.context.lineTo(this.context.canvas.offsetWidth, offsetY + (y * this.tileHeight));
         }
 
-        this.context.strokeStyle = 'black';
+        this.context.strokeStyle = 'white';
         this.context.stroke();
     }
 
@@ -148,11 +148,31 @@ class Grid {
         let prefix = '!pb1d.';
         let out = '';
 
-        this.layout.forEach( row => {
-            row.forEach(tile => {
-                out += (tile.color.title === 'eraser' ? 'z' : tile.color.title);
-            });
-        });
+        for (let rowIdx = this.layout.length -1; rowIdx >= 0; --rowIdx) {
+            
+            let row = this.layout[rowIdx];
+
+            // if even
+            if ((rowIdx + 1) % 2 === 0) {
+                // iterate from left to right
+                for (let tileIdx = 0; tileIdx < row.length; ++tileIdx) {
+                    let tile = row[tileIdx];
+                    out += (tile.color.title === 'eraser' ? 'z' : tile.color.title);
+                }
+
+            } else {
+                // if odd
+
+                // iterate from right to left
+
+                for (let tileIdx = row.length - 1; tileIdx >= 0; --tileIdx) {
+                    let tile = row[tileIdx];
+                    out += (tile.color.title === 'eraser' ? 'z' : tile.color.title);
+                }
+
+            }
+
+        }
 
         return prefix + this.encodeRLE(out);
     }
