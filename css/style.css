@@ -6,10 +6,24 @@
 .logo {
   font-family: '3X5';
   font-size: 50px;
+  padding-left: 15px;
+}
+
+
+.details-box {
+  padding: 20px !important;
+  margin-top:20px;
+  text-align: center;
+  background-color: #fff8e1 !important;
+  border: 2px dashed #ff8f00;
 }
 
 .grid {
   /*min-width: 480px;*/
+}
+
+a {
+  color: #ff8f00 !important;
 }
 
 
