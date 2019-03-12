@@ -4,6 +4,14 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+	<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
 	<script src="js/tile.js"></script>
 	<script src="js/grid.js"></script>
 	<script src="js/main.js"></script>
@@ -11,17 +19,38 @@
 </head>
 <body>
 
-<div id="palette">
-</div>
+	<nav>
+		<div class="nav-wrapper amber darken-3">
+			<div class="logo">pBot <small>editor</small></div>
+		</div>
+	</nav>
 
-<canvas id="PBotCanvas" width="480" height="480"></canvas>
+	<div class="row"> 
+		<div class="col s12 m12 l5 offset-l1 grid ">
+			<canvas id="PBotCanvas"></canvas>
+		</div>
 
-<div>
-	<h1>Result</h1><br>
-	<button id="code-btn">Generate Code</button>
-	<p contenteditable="true" class="result" id="demo"></p>
-	<button onclick="copyToClipboard('#demo')">Copy Command</button>
-</div>
+		<div class="col s12 m12 l5 offset-l1 controls">
+			<div class="palette">
+				<ul class="color-list">	
+					<li></li>
+				</ul>
+			</div>
+
+			<div class="code hide">
+				<p contenteditable="true" class="result" id="demo"></p>
+			</div>
+
+			<div class="buttons center-align">
+				<button class="btn waves-effect waves-light amber darken-3" id="code-btn">Generate Code
+					<i class="material-icons right">code</i>
+				</button>
+				<button class="btn waves-effect waves-light #f9a825 yellow darken-3" onclick="copyToClipboard('#demo')">Copy Code
+					<i class="material-icons right">content_copy</i>
+				</button>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

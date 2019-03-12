@@ -1,19 +1,18 @@
-#art{
-  display: table;
-  border-spacing: 1px;
-  background-color: black;
-  border: 5px solid black;
-}
-.row{
-  display:table-row;
+@font-face {
+  font-family: '3X5';
+  src: url(./fonts/3X5.TTF) format('truetype');
 }
 
-.pixel{
-  display: table-cell;
-  background-color: gray;
-  width:40px;
-  height: 40px;
+.logo {
+  font-family: '3X5';
+  font-size: 50px;
 }
+
+.grid {
+  /*min-width: 480px;*/
+}
+
+
 .pen{
   display: inline-block;
   width: 40px;
@@ -48,19 +47,20 @@
 
 .result{
   white-space: nowrap;
-  width: 200px;
+  width: 100%;
   border: 1px solid #000000;
-  overflow: hidden;
+  overflow-x: scroll;
   text-overflow: clip;
+  padding: 5px;
 }
 
-#palette {
-  width: fit-content;
-  margin-left: calc(50% - 494px);
+.buttons {
+  width: 100%;
 }
 
 #PBotCanvas {
-  margin-left: calc(50% - 240px);
+  /*margin-left: calc(50% - 240px);*/
   margin-top: 10px;
   cursor: none;
+  display: block;
 }

@@ -31,14 +31,27 @@ const COLOR_PALETTE = [
 class PBotCanvas {
 
     constructor() {
+        this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         this.element = document.getElementById('PBotCanvas');
+
+        let elementWidth = $('.grid').outerWidth();
+        let gridWidth = elementWidth > 480 ?  480 : elementWidth;
+
+        // check for mobile
+        if (this.isMobile) {
+            gridWidth = elementWidth; 
+        }
+
+        this.element.width = gridWidth;
+        this.element.height = gridWidth;
+
         this.context = this.element.getContext('2d');
         this.grid = new Grid(this.context);
         this.currentColor = COLOR_PALETTE[1];
         this.pointer = new Tile({
             id: null,
-            width: 40,
-            height: 40,
+            width: this.element.width / MAX_WIDTH,
+            height: this.element.height / MAX_HEIGHT,
             color: this.currentColor,
             positionX: null,
             positionY: null,
@@ -147,6 +160,8 @@ class PBotCanvas {
         // Generate Code
         document.getElementById('code-btn').onclick = (e) => {
             document.getElementById('demo').innerHTML = this.grid.generateCode();
+            $('.code').removeClass('hide');
+            $('.code').addClass('show');
         };
 
         
@@ -159,7 +174,10 @@ class PBotCanvas {
     update() {
         this.context.clearRect(0, 0, this.element.width, this.element.height);
         this.grid.draw();
-        this.pointer.draw();
+        
+        if (!this.isMobile) {
+            this.pointer.draw();
+        }
     }
 
     /**
@@ -170,8 +188,10 @@ class PBotCanvas {
         for(let i = 0; i < COLOR_PALETTE.length; ++i) {
             if (COLOR_PALETTE[i].title === 'eraser') {
                 $('#palette').append('<div data-index="' + i + '" class="pen eraser"> <i class="fas fa-eraser"></i> </div>')
+                $('.color-list').append('<li data-index="' + i + '" class="pen eraser"> <i class="fas fa-eraser"></i> </li>')
             } else {
                 $('#palette').append('<div data-index="' + i + '" class="pen" style="background-color:' + COLOR_PALETTE[i].color + ';"></div>')
+                $('.color-list').append('<li data-index="' + i + '" class="pen" style="background-color:' + COLOR_PALETTE[i].color + ';"></li>')
             }
         }
     }

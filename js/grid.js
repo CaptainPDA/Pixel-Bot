@@ -111,7 +111,7 @@ class Grid {
      * handleCollition
      * @description: Check tile collitions on given coordinates and set tile color
      */
-    handleCollition(x, y, selectedColor) {
+    handleCollition(x, y, selectedColor, callback = null) {
 
         for (let row = 0; row < this.layout.length; ++row) {
             let stop = false;
@@ -132,6 +132,11 @@ class Grid {
                 break;
             }
 
+        }
+
+        //next?
+        if (callback) {
+            callback();
         }
 
     }
@@ -180,7 +185,7 @@ class Grid {
                 charCount = 1;
             }
         }
-        
+
         return out;
     }
     
