@@ -63,7 +63,7 @@ class PBotCanvas {
     init() {
         this.drawPalette();
         this.subscribeToEvents();
-        this.update()
+        this.update();
     }
 
     /**
@@ -145,6 +145,9 @@ class PBotCanvas {
             if (element.hasClass('eraser')) {
                 self.currentColor = COLOR_PALETTE[0];
                 type = 'eraser';
+            } else if (element.hasClass('clear-all')) {
+                self.grid.decodeRLE('!pb1d.144z');
+                self.update();
             } else {
 
                 let i = element.attr('data-index');
@@ -160,8 +163,51 @@ class PBotCanvas {
         // Generate Code
         document.getElementById('code-btn').onclick = (e) => {
             document.getElementById('demo').innerHTML = this.grid.generateCode();
-            $('.code').removeClass('hide');
-            $('.code').addClass('show');
+
+            $('.copy-code').removeClass('hide');
+            $('.copy-code').addClass('show');
+
+            // hide copy load-code
+            $('.load-code').removeClass('show');
+            $('.load-code').addClass('hide');
+
+            // show load code button
+            $('#load-code-btn').removeClass('hide');
+            $('#load-code-btn').addClass('show');
+        };
+
+
+        // Load Code
+        document.getElementById('load-code-btn').onclick = (e) => {            
+            // show code input
+            $('.load-code').removeClass('hide');
+            $('.load-code').addClass('show');
+
+            // hide button
+            $('#load-code-btn').removeClass('show');
+            $('#load-code-btn').addClass('hide');
+            
+            // hide copy inpuy
+            $('.copy-code').removeClass('show');
+            $('.copy-code').addClass('hide');
+        };
+
+        // Decode Button
+        document.getElementById('decode-btn').onclick = (e) => {
+            this.grid.decodeRLE(document.getElementById('decode-command').innerHTML);
+            this.update();
+            
+            // show code input
+            $('.load-code').removeClass('hide');
+            $('.load-code').addClass('show');
+
+            // hide button
+            $('#load-code-btn').removeClass('show');
+            $('#load-code-btn').addClass('hide');
+            
+            // hide copy input
+            $('.code').removeClass('show');
+            $('.copy-code').addClass('hide');
         };
 
         
@@ -187,13 +233,17 @@ class PBotCanvas {
         
         for(let i = 0; i < COLOR_PALETTE.length; ++i) {
             if (COLOR_PALETTE[i].title === 'eraser') {
-                $('#palette').append('<div data-index="' + i + '" class="pen eraser"> <i class="fas fa-eraser"></i> </div>')
-                $('.color-list').append('<li data-index="' + i + '" class="pen eraser"> <i class="fas fa-eraser"></i> </li>')
+                $('.color-list').append('<li data-index="' + i + '" class="pen eraser"> <i class="fas fa-eraser"></i> </li>');
             } else {
-                $('#palette').append('<div data-index="' + i + '" class="pen" style="background-color:' + COLOR_PALETTE[i].color + ';"></div>')
-                $('.color-list').append('<li data-index="' + i + '" class="pen" style="background-color:' + COLOR_PALETTE[i].color + ';"></li>')
+                $('.color-list').append('<li data-index="' + i + '" class="pen" style="background-color:' + COLOR_PALETTE[i].color + ';"></li>');
             }
         }
+
+        
+        // Clear All
+        $('.color-list').append('<li class="pen clear-all"> <i class="fas fa-trash-alt"></i> </li>');
+
+
     }
     
 }

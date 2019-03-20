@@ -38,7 +38,7 @@
 		
 		
 		<div class="row"> 
-			<div class="col s12 m12 l5 offset-l1 grid ">
+			<div class="col s12 m12 l5 offset-l1 grid">
 				<canvas id="PBotCanvas"></canvas>
 			</div>
 			
@@ -49,17 +49,28 @@
 					</ul>
 				</div>
 				
-				<div class="code hide">
+				<div class="copy-code hide">
 					<p contenteditable="true" class="result" id="demo"></p>
+					<button class="btn waves-effect waves-light #f9a825 yellow darken-3 button-copy" onclick="copyToClipboard('#demo')">
+						<i class="material-icons">content_copy</i>
+					</button>
+				</div>
+				
+				<div class="load-code hide">
+					<p contenteditable="true" class="result" id="decode-command"></p>
+					<button class="btn waves-effect waves-light #f9a825 grey darken-4 button-load" id="decode-btn">
+						<i class="material-icons">file_upload</i>
+					</button>
 				</div>
 				
 				<div class="buttons center-align">
+					<button class="btn waves-effect waves-light grey darken-4" id="load-code-btn">Load Code
+						<i class="material-icons left">input</i>
+					</button>
 					<button class="btn waves-effect waves-light amber darken-3" id="code-btn">Generate Code
-						<i class="material-icons right">code</i>
+						<i class="material-icons left">code</i>
 					</button>
-					<button class="btn waves-effect waves-light #f9a825 yellow darken-3" onclick="copyToClipboard('#demo')">Copy Code
-							<i class="material-icons right">content_copy</i>
-					</button>
+					
 				</div>
 
 				<footer class="mobile hide-on-large-only">

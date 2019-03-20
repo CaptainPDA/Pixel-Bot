@@ -60,14 +60,37 @@ a {
   margin-left: 6px;
 }
 
+.pen.clear-all {
+  color: rgba(0, 0, 0, 0.2);
+  transition: all ease 0.1s;
+}
+
+.pen.clear-all:hover {
+  color: rgba(0, 0, 0, 1);
+}
+
+.pen.clear-all i{
+  font-size: 28px;
+  margin-top: 8px;
+  margin-left: 6px;
+}
+
 
 .result{
   white-space: nowrap;
-  width: 100%;
+  width: calc(100% - 75px);
   border: 1px solid #000000;
   overflow-x: scroll;
   text-overflow: clip;
   padding: 5px;
+  display: inline-block;
+}
+
+.button-copy,
+.button-load {
+  padding: 0px 10px;
+  margin-top: -75px;
+  display: inline-block;
 }
 
 .buttons {
